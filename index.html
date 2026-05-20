@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Společně | Brod, Liblice, Štolmíř, Zahrady</title>
+
+  <style>
+    :root {
+      --navy: #12304a;
+      --green: #63a744;
+      --red: #d84a32;
+      --light: #f5f8f6;
+      --text: #243447;
+      --white: #ffffff;
+      --shadow: 0 18px 45px rgba(18, 48, 74, 0.14);
+      --radius: 24px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      color: var(--text);
+      background: var(--light);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 8px 25px rgba(18, 48, 74, 0.08);
+    }
+
+    .nav {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 14px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .brand img {
+      height: 54px;
+      width: auto;
+    }
+
+    .menu {
+      display: flex;
+      gap: 24px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .menu a:hover {
+      color: var(--green);
+    }
+
+    .hero {
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      padding: 80px 22px;
+      background:
+        radial-gradient(circle at top right, rgba(99, 167, 68, 0.18), transparent 36%),
+        linear-gradient(135deg, #ffffff 0%, #f5f8f6 100%);
+    }
+
+    .hero-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: rgba(99, 167, 68, 0.13);
+      color: var(--green);
+      font-weight: 800;
+      padding: 8px 16px;
+      border-radius: 999px;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 7vw, 82px);
+      line-height: 1;
+      color: var(--navy);
+      margin-bottom: 24px;
+      letter-spacing: -2px;
+    }
+
+    h1 span {
+      color: var(--green);
+    }
+
+    .hero p {
+      font-size: 20px;
+      max-width: 680px;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      padding: 15px 24px;
+      border-radius: 999px;
+      font-weight: 800;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: var(--green);
+      color: white;
+      box-shadow: 0 12px 30px rgba(99, 167, 68, 0.32);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--navy);
+      border: 2px solid rgba(18, 48, 74, 0.12);
+    }
+
+    .hero-logo {
+      background: white;
+      padding: 34px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .hero-logo img {
+      max-width: 100%;
+    }
+
+    section {
+      padding: 90px 22px;
+    }
+
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      max-width: 760px;
+      margin-bottom: 42px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(34px, 5vw, 54px);
+      color: var(--navy);
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+
+    .section-title p {
+      font-size: 19px;
+    }
+
+    .about {
+      background: white;
+    }
+
+    .about-card {
+      background: var(--light);
+      border-left: 8px solid var(--green);
+      padding: 36px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      font-size: 20px;
+    }
+
+    .priorities {
+      background: var(--navy);
+      color: white;
+    }
+
+    .priorities .section-title h2,
+    .priorities .section-title p {
+      color: white;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .priority-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 26px;
+      border-radius: 22px;
+      transition: 0.25s ease;
+    }
+
+    .priority-card:hover {
+      transform: translateY(-6px);
+      background: rgba(255, 255, 255, 0.13);
+    }
+
+    .icon {
+      width: 42px;
+      height: 42px;
+      background: var(--green);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      font-size: 22px;
+    }
+
+    .priority-card h3 {
+      font-size: 21px;
+      margin-bottom: 8px;
+    }
+
+    .closing {
+      text-align: center;
+      background:
+        linear-gradient(135deg, rgba(216, 74, 50, 0.12), rgba(99, 167, 68, 0.15)),
+        white;
+    }
+
+    .closing h2 {
+      color: var(--navy);
+      font-size: clamp(34px, 5vw, 58px);
+      max-width: 900px;
+      margin: 0 auto 20px;
+      line-height: 1.12;
+    }
+
+    .contact {
+      background: white;
+    }
+
+    .contact-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .contact-card {
+      background: var(--light);
+      padding: 34px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-card h3 {
+      color: var(--navy);
+      font-size: 26px;
+      margin-bottom: 14px;
+    }
+
+    .socials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .socials a {
+      background: var(--navy);
+      color: white;
+      padding: 13px 20px;
+      border-radius: 999px;
+      font-weight: 800;
+    }
+
+    .socials a:hover {
+      background: var(--green);
+    }
+
+    footer {
+      background: var(--navy);
+      color: white;
+      text-align: center;
+      padding: 24px;
+    }
+
+    @media (max-width: 900px) {
+      .hero-inner,
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .menu {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 50px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .brand span {
+        display: none;
+      }
+
+      .hero-logo {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <nav class="nav">
+      <a href="#" class="brand">
+        <img src="logo-spolecne.png" alt="Logo Společně">
+        <span>Společně</span>
+      </a>
+
+      <div class="menu">
+        <a href="#onas">Kdo jsme</a>
+        <a href="#priority">Priority</a>
+        <a href="#kontakt">Kontakt</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">Brod • Liblice • Štolmíř • Zahrady</div>
+
+          <h1>Nová energie pro Brod i místní části<span>.</span></h1>
+
+          <p>
+            Jsme nové sdružení nezávislých kandidátů, kteří v Českém Brodě,
+            Liblicích, Štolmíři i Zahradách opravdu žijí. Záleží nám na tom,
+            jak se naše město rozvíjí.
+          </p>
+
+          <div class="buttons">
+            <a href="#priority" class="btn btn-primary">Naše priority</a>
+            <a href="#kontakt" class="btn btn-secondary">Kontaktujte nás</a>
+          </div>
+        </div>
+
+        <div class="hero-logo">
+          <img src="logo-spolecne.png" alt="Společně logo">
+        </div>
+      </div>
+    </section>
+
+    <section id="onas" class="about">
+      <div class="container">
+        <div class="section-title">
+          <h2>Kdo jsme</h2>
+          <p>Jeden tým pro všechny části našeho města.</p>
+        </div>
+
+        <div class="about-card">
+          <p>
+            Spojujeme zkušenosti, energii mladých i empatii. Pracujeme tu,
+            vychováváme děti a chceme Český Brod, Liblice, Štolmíř i Zahrady
+            posouvat dopředu s rozumem, respektem a skutečným zájmem o lidi.
+          </p>
+          <br>
+          <p>
+            Těšíme se na setkání s vámi všemi i společnou práci pro náš domov.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="priority" class="priorities">
+      <div class="container">
+        <div class="section-title">
+          <h2>Naše priority pro Český Brod</h2>
+          <p>Chceme město, které je bezpečné, moderní a příjemné pro každodenní život.</p>
+        </div>
+
+        <div class="grid">
+          <div class="priority-card">
+            <div class="icon">✓</div>
+            <h3>Bezpečné město</h3>
+            <p>Větší důraz na pořádek, prevenci a spolupráci s městskou policií.</p>
+          </div>
+
+          <div class="priority-card">
+            <div class="icon">⚽</div>
+            <h3>Více sportovišť a hřišť</h3>
+            <p>Kvalitní zázemí pro děti, mladé, rodiny i aktivní seniory.</p>
+          </div>
+
+          <div class="priority-card">
+            <div class="icon">🚗</div>
+            <h3>Lepší doprava</h3>
+            <p>Bezpečnější a plynulejší doprava pro řidiče, chodce i cyklisty.</p>
+          </div>
+
+          <div class="priority-card">
+            <div class="icon">🛣️</div>
+            <h3>Chodníky a silnice</h3>
+            <p>Opravená infrastruktura a město příjemné pro každodenní život.</p>
+          </div>
+
+          <div class="priority-card">
+            <div class="icon">🌳</div>
+            <h3>Více zeleně</h3>
+            <p>Péče o parky, veřejná prostranství a místa, kde lidé opravdu žijí.</p>
+          </div>
+
+          <div class="priority-card">
+            <div class="icon">🏥</div>
+            <h3>Dostupná zdravotní péče</h3>
+            <p>Podpora služeb, které lidé potřebují v běžném životě.</p>
+          </div>
+
+          <div class="priority-card">
+            <div class="icon">🚶</div>
+            <h3>Pěší a vycházkové trasy</h3>
+            <p>Více možností pro procházky, pohyb i odpočinek ve městě a okolí.</p>
+          </div>
+
+          <div class="priority-card">
+            <div class="icon">💡</div>
+            <h3>Chytré město</h3>
+            <p>Moderní technologie, lepší komunikace s občany a město, které drží krok s dobou.</p>
+          </div>
+
+          <div class="priority-card">
+            <div class="icon">🤝</div>
+            <h3>Město pro všechny generace</h3>
+            <p>Místo, kde se dobře žije dětem, rodinám, mladým i seniorům.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing">
+      <div class="container">
+        <h2>Chceme Český Brod, který je bezpečný, moderní a příjemný pro život.</h2>
+        <p>Vaši kandidáti sdružení Společně 💚</p>
+      </div>
+    </section>
+
+    <section id="kontakt" class="contact">
+      <div class="container">
+        <div class="section-title">
+          <h2>Kontakt</h2>
+          <p>Sledujte nás na sociálních sítích nebo nám napište.</p>
+        </div>
+
+        <div class="contact-box">
+          <div class="contact-card">
+            <h3>Napište nám</h3>
+            <p>
+              E-mail:
+              <a href="mailto:spolecne21@email.cz">
+                <strong>spolecne21@email.cz</strong>
+              </a>
+            </p>
+          </div>
+
+          <div class="contact-card">
+            <h3>Sociální sítě</h3>
+            <p>Buďte s námi v kontaktu a sledujte novinky.</p>
+
+            <div class="socials">
+              <a href="https://www.facebook.com/profile.php?id=61573410245262" target="_blank">Facebook</a>
+              <a href="https://www.instagram.com/spolecnedovoleb/" target="_blank">Instagram</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 Společně — Brod, Liblice, Štolmíř, Zahrady
+  </footer>
+
+</body>
+</html>
