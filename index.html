@@ -1,412 +1,69 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="cs">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Společně - nové sdružení nezávislých kandidátů pro Český Brod, Liblice, Štolmíř a Zahrady.">
   <title>Společně | Brod, Liblice, Štolmíř, Zahrady</title>
-
-  <style>
-    :root {
-      --navy: #12304a;
-      --green: #63a744;
-      --red: #d84a32;
-      --light: #f5f8f6;
-      --text: #243447;
-      --white: #ffffff;
-      --shadow: 0 18px 45px rgba(18, 48, 74, 0.14);
-      --radius: 24px;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      color: var(--text);
-      background: var(--light);
-      line-height: 1.6;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(14px);
-      box-shadow: 0 8px 25px rgba(18, 48, 74, 0.08);
-    }
-
-    .nav {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 14px 22px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      font-weight: 800;
-      color: var(--navy);
-    }
-
-    .brand img {
-      height: 54px;
-      width: auto;
-    }
-
-    .menu {
-      display: flex;
-      gap: 24px;
-      font-weight: 700;
-      color: var(--navy);
-    }
-
-    .menu a:hover {
-      color: var(--green);
-    }
-
-    .hero {
-      min-height: 88vh;
-      display: flex;
-      align-items: center;
-      padding: 80px 22px;
-      background:
-        radial-gradient(circle at top right, rgba(99, 167, 68, 0.18), transparent 36%),
-        linear-gradient(135deg, #ffffff 0%, #f5f8f6 100%);
-    }
-
-    .hero-inner {
-      max-width: 1180px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      align-items: center;
-      gap: 60px;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      background: rgba(99, 167, 68, 0.13);
-      color: var(--green);
-      font-weight: 800;
-      padding: 8px 16px;
-      border-radius: 999px;
-      margin-bottom: 22px;
-    }
-
-    h1 {
-      font-size: clamp(42px, 7vw, 82px);
-      line-height: 1;
-      color: var(--navy);
-      margin-bottom: 24px;
-      letter-spacing: -2px;
-    }
-
-    h1 span {
-      color: var(--green);
-    }
-
-    .hero p {
-      font-size: 20px;
-      max-width: 680px;
-      margin-bottom: 30px;
-    }
-
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
-
-    .btn {
-      padding: 15px 24px;
-      border-radius: 999px;
-      font-weight: 800;
-      display: inline-block;
-    }
-
-    .btn-primary {
-      background: var(--green);
-      color: white;
-      box-shadow: 0 12px 30px rgba(99, 167, 68, 0.32);
-    }
-
-    .btn-secondary {
-      background: white;
-      color: var(--navy);
-      border: 2px solid rgba(18, 48, 74, 0.12);
-    }
-
-    .hero-logo {
-      background: white;
-      padding: 34px;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      text-align: center;
-    }
-
-    .hero-logo img {
-      max-width: 100%;
-    }
-
-    section {
-      padding: 90px 22px;
-    }
-
-    .container {
-      max-width: 1180px;
-      margin: 0 auto;
-    }
-
-    .section-title {
-      max-width: 760px;
-      margin-bottom: 42px;
-    }
-
-    .section-title h2 {
-      font-size: clamp(34px, 5vw, 54px);
-      color: var(--navy);
-      line-height: 1.1;
-      margin-bottom: 14px;
-    }
-
-    .section-title p {
-      font-size: 19px;
-    }
-
-    .about {
-      background: white;
-    }
-
-    .about-card {
-      background: var(--light);
-      border-left: 8px solid var(--green);
-      padding: 36px;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      font-size: 20px;
-    }
-
-    .priorities {
-      background: var(--navy);
-      color: white;
-    }
-
-    .priorities .section-title h2,
-    .priorities .section-title p {
-      color: white;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .priority-card {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      padding: 26px;
-      border-radius: 22px;
-      transition: 0.25s ease;
-    }
-
-    .priority-card:hover {
-      transform: translateY(-6px);
-      background: rgba(255, 255, 255, 0.13);
-    }
-
-    .icon {
-      width: 42px;
-      height: 42px;
-      background: var(--green);
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 18px;
-      font-size: 22px;
-    }
-
-    .priority-card h3 {
-      font-size: 21px;
-      margin-bottom: 8px;
-    }
-
-    .closing {
-      text-align: center;
-      background:
-        linear-gradient(135deg, rgba(216, 74, 50, 0.12), rgba(99, 167, 68, 0.15)),
-        white;
-    }
-
-    .closing h2 {
-      color: var(--navy);
-      font-size: clamp(34px, 5vw, 58px);
-      max-width: 900px;
-      margin: 0 auto 20px;
-      line-height: 1.12;
-    }
-
-    .contact {
-      background: white;
-    }
-
-    .contact-box {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-    }
-
-    .contact-card {
-      background: var(--light);
-      padding: 34px;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-
-    .contact-card h3 {
-      color: var(--navy);
-      font-size: 26px;
-      margin-bottom: 14px;
-    }
-
-    .socials {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 18px;
-    }
-
-    .socials a {
-      background: var(--navy);
-      color: white;
-      padding: 13px 20px;
-      border-radius: 999px;
-      font-weight: 800;
-    }
-
-    .socials a:hover {
-      background: var(--green);
-    }
-
-    footer {
-      background: var(--navy);
-      color: white;
-      text-align: center;
-      padding: 24px;
-    }
-
-    @media (max-width: 900px) {
-      .hero-inner,
-      .contact-box {
-        grid-template-columns: 1fr;
-      }
-
-      .grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .menu {
-        display: none;
-      }
-
-      .hero {
-        padding-top: 50px;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
-
-      .brand span {
-        display: none;
-      }
-
-      .hero-logo {
-        padding: 20px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css?v=29">
 </head>
-
 <body>
+  <header class="site-header" data-header>
+    <a class="brand" href="#uvod" aria-label="Společně - úvod">
+      <img src="logo-spolecne-transparent.png" alt="Společně">
+    </a>
 
-  <header>
-    <nav class="nav">
-      <a href="#" class="brand">
-        <img src="logo-spolecne.png" alt="Logo Společně">
-        <span>Společně</span>
-      </a>
+    <button class="nav-toggle" type="button" aria-label="Otevřít menu" aria-expanded="false" data-nav-toggle>
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
 
-      <div class="menu">
-        <a href="#onas">Kdo jsme</a>
-        <a href="#priority">Priority</a>
-        <a href="#kontakt">Kontakt</a>
-      </div>
+    <nav class="site-nav" aria-label="Hlavní navigace" data-nav>
+      <a href="#onas">Kdo jsme</a>
+      <a href="#priority">Priority</a>
+      <a href="#kandidati">Kandidáti</a>
+      <a href="#kontakt">Kontakt</a>
     </nav>
   </header>
 
   <main>
+    <section class="hero" id="uvod">
+      <div class="hero-art" aria-hidden="true">
+        <span class="hero-mark hero-mark-one"></span>
+        <span class="hero-mark hero-mark-two"></span>
+      </div>
 
-    <section class="hero">
-      <div class="hero-inner">
-        <div>
-          <div class="eyebrow">Brod • Liblice • Štolmíř • Zahrady</div>
-
-          <h1>Nová energie pro Brod i místní části<span>.</span></h1>
-
-          <p>
-            Jsme nové sdružení nezávislých kandidátů, kteří v Českém Brodě,
-            Liblicích, Štolmíři i Zahradách opravdu žijí. Záleží nám na tom,
-            jak se naše město rozvíjí.
-          </p>
-
-          <div class="buttons">
-            <a href="#priority" class="btn btn-primary">Naše priority</a>
-            <a href="#kontakt" class="btn btn-secondary">Kontaktujte nás</a>
-          </div>
+      <div class="hero-content reveal">
+        <p class="kicker">Brod . Liblice . Štolmíř . Zahrady</p>
+        <h1>Společně: Nová energie pro Brod i místní části!</h1>
+        <p class="hero-lead">
+          Jsme nové sdružení nezávislých kandidátů, kteří v Českém Brodě,
+          Liblicích, Štolmíři i Zahradách opravdu žijí. Pracujeme tu,
+          vychováváme děti a záleží nám na tom, jak se naše město rozvíjí.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#priority">Naše priority</a>
+          <a class="button button-secondary" href="mailto:spolecne21@email.cz">Napište nám</a>
         </div>
+      </div>
 
-        <div class="hero-logo">
-          <img src="logo-spolecne.png" alt="Společně logo">
-        </div>
+      <div class="hero-logo reveal">
+        <img class="main-logo" src="logo-spolecne-transparent.png" alt="Logo Společně">
       </div>
     </section>
 
-    <section id="onas" class="about">
-      <div class="container">
-        <div class="section-title">
-          <h2>Kdo jsme</h2>
-          <p>Jeden tým pro všechny části našeho města.</p>
+    <section class="intro-section" id="onas">
+      <div class="section-shell two-column">
+        <div class="section-heading reveal">
+          <p class="kicker">Kdo jsme</p>
+          <h2>Jeden tým pro všechny části našeho města.</h2>
         </div>
-
-        <div class="about-card">
+        <div class="intro-copy reveal">
           <p>
-            Spojujeme zkušenosti, energii mladých i empatii. Pracujeme tu,
-            vychováváme děti a chceme Český Brod, Liblice, Štolmíř i Zahrady
-            posouvat dopředu s rozumem, respektem a skutečným zájmem o lidi.
+            Spojujeme zkušenosti, energii mladých i empatii. Jsme jeden tým pro
+            všechny části našeho města.
           </p>
-          <br>
           <p>
             Těšíme se na setkání s vámi všemi i společnou práci pro náš domov.
           </p>
@@ -414,114 +71,364 @@
       </div>
     </section>
 
-    <section id="priority" class="priorities">
-      <div class="container">
-        <div class="section-title">
-          <h2>Naše priority pro Český Brod</h2>
-          <p>Chceme město, které je bezpečné, moderní a příjemné pro každodenní život.</p>
+    <section class="countdown-section" aria-label="Odpočet do voleb">
+      <div class="section-shell countdown-shell reveal">
+        <div class="countdown-copy">
+          <p class="kicker">Volby začínají v pátek 9. října 2026 ve 14:00</p>
+          <h2>Volby za</h2>
+          <p>Čas běží. Společně můžeme dát Brodu, Liblicím, Štolmíři a Zahradám novou energii.</p>
         </div>
 
-        <div class="grid">
-          <div class="priority-card">
-            <div class="icon">✓</div>
-            <h3>Bezpečné město</h3>
-            <p>Větší důraz na pořádek, prevenci a spolupráci s městskou policií.</p>
+        <div class="countdown-grid" data-countdown aria-live="polite">
+          <div class="countdown-item">
+            <strong data-days>000</strong>
+            <span>dnů</span>
           </div>
+          <div class="countdown-item">
+            <strong data-hours>00</strong>
+            <span>hodin</span>
+          </div>
+          <div class="countdown-item">
+            <strong data-minutes>00</strong>
+            <span>minut</span>
+          </div>
+          <div class="countdown-item">
+            <strong data-seconds>00</strong>
+            <span>sekund</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-          <div class="priority-card">
-            <div class="icon">⚽</div>
+    <section class="quick-priorities" aria-label="Krátký přehled priorit">
+      <div class="ticker" data-ticker>
+        <div class="ticker-track">
+          <span>Bezpečné město</span>
+          <span>Více sportovišť a hřišť</span>
+          <span>Lepší doprava</span>
+          <span>Opravené chodníky a silnice</span>
+          <span>Kvalitní veřejný prostor</span>
+          <span>Pěší a vycházkové trasy</span>
+          <span>Více zeleně</span>
+          <span>Dostupná zdravotní péče</span>
+          <span>Chytré město</span>
+          <span>Město pro všechny generace</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="priorities-section" id="priority">
+      <div class="section-shell">
+        <div class="section-heading reveal">
+          <p class="kicker">Naše priority pro Český Brod</p>
+          <h2>Bezpečné, moderní a příjemné město pro každodenní život.</h2>
+        </div>
+
+        <div class="priority-grid">
+          <article class="priority-card reveal">
+            <span class="card-number">01</span>
+            <h3>Bezpečné město pro každého</h3>
+            <p>Větší důraz na pořádek, prevenci a spolupráci s městskou policií.</p>
+          </article>
+          <article class="priority-card reveal">
+            <span class="card-number">02</span>
             <h3>Více sportovišť a hřišť</h3>
             <p>Kvalitní zázemí pro děti, mladé, rodiny i aktivní seniory.</p>
-          </div>
-
-          <div class="priority-card">
-            <div class="icon">🚗</div>
-            <h3>Lepší doprava</h3>
+          </article>
+          <article class="priority-card reveal">
+            <span class="card-number">03</span>
+            <h3>Lepší doprava ve městě</h3>
             <p>Bezpečnější a plynulejší doprava pro řidiče, chodce i cyklisty.</p>
-          </div>
-
-          <div class="priority-card">
-            <div class="icon">🛣️</div>
-            <h3>Chodníky a silnice</h3>
-            <p>Opravená infrastruktura a město příjemné pro každodenní život.</p>
-          </div>
-
-          <div class="priority-card">
-            <div class="icon">🌳</div>
-            <h3>Více zeleně</h3>
-            <p>Péče o parky, veřejná prostranství a místa, kde lidé opravdu žijí.</p>
-          </div>
-
-          <div class="priority-card">
-            <div class="icon">🏥</div>
-            <h3>Dostupná zdravotní péče</h3>
-            <p>Podpora služeb, které lidé potřebují v běžném životě.</p>
-          </div>
-
-          <div class="priority-card">
-            <div class="icon">🚶</div>
+          </article>
+          <article class="priority-card reveal">
+            <span class="card-number">04</span>
+            <h3>Opravené chodníky a silnice</h3>
+            <p>Město, které je upravené, funkční a příjemné pro každodenní život.</p>
+          </article>
+          <article class="priority-card reveal">
+            <span class="card-number">05</span>
+            <h3>Kvalitní veřejný prostor</h3>
+            <p>Čistota, pořádek, lavičky, odpadkové koše a moderní městský mobiliář.</p>
+          </article>
+          <article class="priority-card reveal">
+            <span class="card-number">06</span>
             <h3>Pěší a vycházkové trasy</h3>
             <p>Více možností pro procházky, pohyb i odpočinek ve městě a okolí.</p>
-          </div>
-
-          <div class="priority-card">
-            <div class="icon">💡</div>
-            <h3>Chytré město</h3>
+          </article>
+          <article class="priority-card reveal">
+            <span class="card-number">07</span>
+            <h3>Více zeleně ve městě i místních částech</h3>
+            <p>Péče o parky, veřejná prostranství a místa, kde lidé opravdu žijí.</p>
+          </article>
+          <article class="priority-card reveal">
+            <span class="card-number">08</span>
+            <h3>Dostupnější zdravotní péče</h3>
+            <p>Podpora služeb, které lidé potřebují v každodenním životě.</p>
+          </article>
+          <article class="priority-card reveal">
+            <span class="card-number">09</span>
+            <h3>Rozvoj města s rozumem</h3>
+            <p>Smysluplné investice, které budou mít skutečný přínos pro obyvatele.</p>
+          </article>
+          <article class="priority-card reveal">
+            <span class="card-number">10</span>
+            <h3>Chytré a moderní město</h3>
             <p>Moderní technologie, lepší komunikace s občany a město, které drží krok s dobou.</p>
-          </div>
-
-          <div class="priority-card">
-            <div class="icon">🤝</div>
+          </article>
+          <article class="priority-card priority-card-wide reveal">
+            <span class="card-number">11</span>
             <h3>Město pro všechny generace</h3>
             <p>Místo, kde se dobře žije dětem, rodinám, mladým i seniorům.</p>
-          </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="closing">
-      <div class="container">
+    <section class="statement-section">
+      <div class="statement-inner reveal">
+        <p class="kicker">Společně pro náš domov</p>
         <h2>Chceme Český Brod, který je bezpečný, moderní a příjemný pro život.</h2>
-        <p>Vaši kandidáti sdružení Společně 💚</p>
       </div>
     </section>
 
-    <section id="kontakt" class="contact">
-      <div class="container">
-        <div class="section-title">
-          <h2>Kontakt</h2>
-          <p>Sledujte nás na sociálních sítích nebo nám napište.</p>
+    <section class="candidates-section" id="kandidati">
+      <div class="section-shell">
+        <div class="section-heading reveal">
+          <p class="kicker">Vaši kandidáti</p>
+          <h2>Lidé, kteří tu žijí a chtějí pracovat pro náš domov.</h2>
         </div>
 
-        <div class="contact-box">
-          <div class="contact-card">
-            <h3>Napište nám</h3>
+        <article class="candidate-profile reveal">
+          <div class="candidate-photo">
+            <img src="marketa.jpg" alt="Markéta Havlíčková">
+          </div>
+          <div class="candidate-story">
+            <p class="kicker">01 / Markéta Havlíčková</p>
+            <h3>Český Brod je mým domovem od narození.</h3>
             <p>
-              E-mail:
-              <a href="mailto:spolecne21@email.cz">
-                <strong>spolecne21@email.cz</strong>
-              </a>
+              Tady jsem vyrůstala, studovala na gymnáziu a dnes tu vychovávám
+              své děti. O to víc mi záleží na tom, jak se v našem městě žije.
+            </p>
+            <p>
+              Jako architektka a místostarostka se dlouhodobě věnuji projektům
+              i realizaci stavebních záměrů. K práci přistupuji pečlivě, s
+              důrazem na estetiku i detail, protože věřím, že kvalitní,
+              funkční a promyšlená řešení mají velký vliv na každodenní život.
+            </p>
+            <p>
+              Jsem pracovitá, zodpovědná a nebojím se říci svůj názor, ale
+              zároveň vždy naslouchám ostatním a respektuji jejich potřeby i
+              přání.
+            </p>
+            <p class="candidate-signature">
+              Záleží mi na našem městě i jeho obyvatelích. Mám to tady prostě ráda.
             </p>
           </div>
+        </article>
 
-          <div class="contact-card">
-            <h3>Sociální sítě</h3>
-            <p>Buďte s námi v kontaktu a sledujte novinky.</p>
+        <article class="candidate-profile candidate-profile-alt reveal">
+          <div class="candidate-photo">
+            <img src="martin.png" alt="Martin Sahula">
+          </div>
+          <div class="candidate-story">
+            <p class="kicker">02 / Martin Sahula</p>
+            <h3>Český Brod je můj domov.</h3>
+            <p>
+              Dlouhodobě pracuji s dětmi jako vychovatel, trenér a mnoho let
+              jsem spojený s SK Český Brod. Právě díky tomu dobře vnímám, jak
+              důležité je mít ve městě kvalitní sportoviště, možnosti pro volný
+              čas a bezpečné prostředí pro každodenní život.
+            </p>
+            <p>
+              Od roku 2022 působím jako radní města a předseda komise pro sport
+              a volný čas. Nejsem příznivcem dlouhého řečnění. Mám raději
+              poctivou práci, klidný přístup a věci, za kterými je vidět
+              konkrétní výsledek.
+            </p>
+            <p class="candidate-signature">
+              Na Českém Brodě mi záleží a chci pro něj dál dělat maximum.
+            </p>
+          </div>
+        </article>
 
-            <div class="socials">
-              <a href="https://www.facebook.com/profile.php?id=61573410245262" target="_blank">Facebook</a>
-              <a href="https://www.instagram.com/spolecnedovoleb/" target="_blank">Instagram</a>
-            </div>
+        <article class="candidate-profile reveal">
+          <div class="candidate-photo">
+            <img src="michaela.png" alt="Michaela Fikejzová">
+          </div>
+          <div class="candidate-story">
+            <p class="kicker">03 / Michaela Fikejzová</p>
+            <h3>Propojuji lidi, sport a místní komunitu.</h3>
+            <p>
+              Český Brod je přirozenou součástí mého každodenního života i
+              života naší rodiny. Dlouhodobě se věnuji propagaci SK Český Brod
+              a podporuji aktivity, které propojují lidi a pomáhají místní
+              komunitě.
+            </p>
+            <p>
+              Jsem také autorkou projektu Pokec na Půlce, kterým přibližuji
+              klub a dění kolem něj širší veřejnosti. Blízký je mi sport,
+              kultura a projekty, které mají pro Český Brod skutečný přínos.
+            </p>
+            <p class="candidate-signature">
+              Záleží mi na tom, aby se v našem městě dobře žilo dětem, rodinám
+              i seniorům a aby se Český Brod dál rozvíjel jako místo, kde se
+              lidé cítí dobře, bezpečně a doma.
+            </p>
+          </div>
+        </article>
+
+        <article class="candidate-profile candidate-profile-alt reveal">
+          <div class="candidate-photo">
+            <img src="libor.jpg" alt="Libor Žofka">
+          </div>
+          <div class="candidate-story">
+            <p class="kicker">04 / Libor Žofka</p>
+            <h3>Bezpečnosti se věnuji celý svůj profesní život.</h3>
+            <p>
+              Třicet let jsem působil u Celní správy - začínal jsem jako řadový
+              celník a končil jako vedoucí samostatného oddělení na Generálním
+              ředitelství cel. V současné době působím jako asistent senátora.
+              Díky tomu vím, jak funguje státní správa, jak řídit velké týmy i
+              jak prosadit potřebná zlepšení.
+            </p>
+            <p>
+              Český Brod a jeho bezpečnost nejsou pro mě jen předvolebním
+              heslem. Jako dlouholetý člen Komise bezpečnosti detailně znám
+              silná i slabá místa našeho města. Mým cílem je systematicky
+              zlepšovat bezpečnost a dopravu, která nás všechny pálí nejvíce.
+            </p>
+            <p class="candidate-signature">
+              Na Českém Brodě, Liblicích, Štolmíři i Zahradách mi záleží - je
+              to můj domov. Chci, aby naše město bylo místem, kde se lidé všech
+              generací cítí bezpečně a kde věci zkrátka fungují.
+            </p>
+          </div>
+        </article>
+
+        <article class="candidate-profile reveal">
+          <div class="candidate-photo">
+            <img src="marketastankova.png" alt="Markéta Staňková">
+          </div>
+          <div class="candidate-story">
+            <p class="kicker">05 / Markéta Staňková</p>
+            <h3>Do všeho, co dělám, vkládám srdce a energii.</h3>
+            <p>
+              Jsem rodačka z Českého Brodu - města, které je pro mě domovem v
+              tom nejhlubším slova smyslu. V Českém Brodě jsem se narodila,
+              vyrůstala, chodila do školky, školy i na gymnázium. Žije zde celá
+              má rodina a dnes tu vychovávám i své dvě děti.
+            </p>
+            <p>
+              Pracuji jako učitelka na 1. stupni základní školy. Práce s dětmi
+              je pro mě nejen povoláním, ale především posláním. Vždy jsem se
+              snažila předávat dětem nejen znalosti, ale také radost z
+              objevování a vytvářet pro ně bezpečné a podnětné prostředí.
+            </p>
+            <p>
+              S objevováním, tvořivostí a prožitkem souvisel také kroužek
+              smyslohraní, který jsem během mateřské dovolené vedla společně s
+              kolegyněmi.
+            </p>
+            <p class="candidate-signature">
+              Do všeho, co dělám, vkládám srdce, energii a opravdový zájem o
+              lidi kolem sebe. Právě tyto hodnoty bych ráda přenášela dál.
+            </p>
+          </div>
+        </article>
+
+        <article class="candidate-profile candidate-profile-alt reveal">
+          <div class="candidate-photo">
+            <img src="davidzofka.jpg" alt="David Žofka">
+          </div>
+          <div class="candidate-story">
+            <p class="kicker">06 / David Žofka</p>
+            <h3>Chci, aby se nám ve městě žilo lépe, bezpečněji a aktivněji.</h3>
+            <p>
+              Je mi 24 let a Český Brod je místem, na kterém mi opravdu záleží.
+              Dlouhodobě se tady snažím přispívat k tomu, aby se nám ve městě
+              žilo lépe, bezpečněji a aktivněji.
+            </p>
+            <p>
+              Pracoval jsem jako učitel na základní škole, následně jako
+              asistent europoslankyně a dnes působím jako ředitel kabinetu
+              ministra pro sport, prevenci a zdraví. Zároveň organizuji letní
+              dětské tábory.
+            </p>
+            <p>
+              Od roku 2019 působím v komisi pro místní části a od roku 2022
+              také v kontrolním výboru města. Společně s kolegy se snažíme
+              posunout vznik bezpečné cesty mezi Českým Brodem a Štolmíří i
+              lepší propojení Českého Brodu a Zahrad.
+            </p>
+            <p class="candidate-signature">
+              Záleží mi na sportu, veřejně přístupných sportovištích a
+              spolupráci města se spolky, organizacemi a podnikateli, kteří
+              vytvářejí život v našem městě.
+            </p>
+          </div>
+        </article>
+
+        <div class="candidate-list-heading reveal">
+          <p class="kicker">Kandidátka Společně</p>
+          <h3>Celý tým</h3>
+        </div>
+
+        <div class="candidate-grid">
+          <div class="candidate-column">
+            <article class="candidate reveal"><span>01</span><strong>Markéta Havlíčková</strong></article>
+            <article class="candidate reveal"><span>02</span><strong>Martin Sahula</strong></article>
+            <article class="candidate reveal"><span>03</span><strong>Michaela Fikejzová</strong></article>
+            <article class="candidate reveal"><span>04</span><strong>Libor Žofka</strong></article>
+            <article class="candidate reveal"><span>05</span><strong>Markéta Staňková</strong></article>
+            <article class="candidate reveal"><span>06</span><strong>David Žofka</strong></article>
+            <article class="candidate reveal"><span>07</span><strong>Kristýna Petráčková</strong></article>
+            <article class="candidate reveal"><span>08</span><strong>Radek Šach</strong></article>
+            <article class="candidate reveal"><span>09</span><strong>Jana Bízková</strong></article>
+            <article class="candidate reveal"><span>10</span><strong>Petr Douša</strong></article>
+            <article class="candidate reveal"><span>11</span><strong>Adéla Vaňková</strong></article>
+          </div>
+          <div class="candidate-column">
+            <article class="candidate reveal"><span>12</span><strong>David Fikejz</strong></article>
+            <article class="candidate reveal"><span>13</span><strong>Anna Thothová</strong></article>
+            <article class="candidate reveal"><span>14</span><strong>Miroslav Siegert</strong></article>
+            <article class="candidate reveal"><span>15</span><strong>Jan Vokáč</strong></article>
+            <article class="candidate reveal"><span>16</span><strong>David Bízek</strong></article>
+            <article class="candidate reveal"><span>17</span><strong>Marek Šubert</strong></article>
+            <article class="candidate reveal"><span>18</span><strong>David Kubelka</strong></article>
+            <article class="candidate reveal"><span>19</span><strong>Vladimír Vostřes</strong></article>
+            <article class="candidate reveal"><span>20</span><strong>Miroslav Doležal</strong></article>
+            <article class="candidate reveal"><span>21</span><strong>Evžen Pospíšil</strong></article>
           </div>
         </div>
       </div>
     </section>
 
+    <section class="contact-section" id="kontakt">
+      <div class="section-shell two-column">
+        <div class="section-heading reveal">
+          <p class="kicker">Kontakt</p>
+          <h2>Ozvěte se nám nebo nás sledujte na sítích.</h2>
+        </div>
+
+        <div class="contact-panel reveal">
+          <a class="contact-link" href="mailto:spolecne21@email.cz">
+            <span>E-mail</span>
+            <strong>spolecne21@email.cz</strong>
+          </a>
+          <div class="social-row">
+            <a href="https://www.facebook.com/profile.php?id=61573410245262" target="_blank" rel="noreferrer">Facebook</a>
+            <a href="https://www.instagram.com/spolecnedovoleb/" target="_blank" rel="noreferrer">Instagram</a>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer>
-    © 2026 Společně — Brod, Liblice, Štolmíř, Zahrady
+  <footer class="site-footer">
+    <span>© 2026 Společně</span>
+    <span>Brod . Liblice . Štolmíř . Zahrady</span>
   </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>
